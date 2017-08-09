@@ -11,10 +11,15 @@
 |
 */
 
+Route::get('/', function(){ return 123; });
+Route::get('/{slug}', 'ListController@index')->name('list');
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/{slug}/lend', 'LendController@index')->name('lend');
+Route::post('/{slug}/lendPhoneCheck', 'LendController@lendPhoneCheck');
 
+Route::post('/{slug}/lendContainerCreate', 'LendController@lendContainerCreate');
 
-Route::get('/lend', 'LendController@index')->name('lend');
+Route::post('/{slug}/customerCreate', 'LendController@customerCreate');
 
-Route::get('/recover', 'RecoverController@index')->name('recover');
+Route::get('/{slug}/recover', 'RecoverController@index')->name('recover');
+

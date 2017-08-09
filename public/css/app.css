@@ -9206,6 +9206,20 @@ button.close {
   font-display: swap;
 }
 
+.container-hidden {
+  display: none;
+}
+
+.info-btn {
+  display: inline-block;
+  width: 46%;
+  margin: 6px;
+}
+
+.noty_body {
+  text-align: center;
+}
+
 .pace {
   -webkit-pointer-events: none;
   pointer-events: none;

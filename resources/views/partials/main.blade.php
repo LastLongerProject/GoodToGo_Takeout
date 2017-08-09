@@ -68,15 +68,15 @@
     <link href="img/1080x1920.png" media="(device-width: 414px) and (device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image">
 
 
-    <script type="text/javascript" src="js/pace.min.js"></script>
-    <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/app.css">
+    <script type="text/javascript" src="{{ asset('/js/pace.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
 </head>
 <body id="main">
     @include('layouts/navbar')
     @yield('content')
 
-<script src="js/app.js" type="text/javascript"></script>
+    <script src="{{ asset('/js/app.js') }}" type="text/javascript"></script>
 @yield('js')
 </body>
 </html>
