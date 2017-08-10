@@ -83,7 +83,7 @@ module.exports = __webpack_require__(9);
  */
 
 __webpack_require__(2);
-
+window.Noty = __webpack_require__(8);
 // window.Vue = require('vue');
 
 // *
@@ -98,34 +98,217 @@ __webpack_require__(2);
 //     el: '#app'
 // });
 
-window.Noty = __webpack_require__(8);
 
 $(document).ready(function () {
 
-  (function (a, b, c) {
-    if (c in b && b[c]) {
-      var d,
-          e = a.location,
-          f = /^(a|html)$/i;a.addEventListener("click", function (a) {
-        d = a.target;while (!f.test(d.nodeName)) {
-          d = d.parentNode;
-        }"href" in d && (d.href.indexOf("http") || ~d.href.indexOf(e.host)) && (a.preventDefault(), e.href = d.href);
-      }, !1);
-    }
-  })(document, window.navigator, "standalone");
+    document.addEventListener("touchmove", function (event) {
+        event.preventDefault();
+    }, false);
 
-  paceOptions = {
-    ajax: false, // disabled
-    document: false, // disabled
-    eventLag: false, // disabled
-    elements: {
-      selectors: ['#main']
-    }
-  };
+    (function (a, b, c) {
+        if (c in b && b[c]) {
+            var d,
+                e = a.location,
+                f = /^(a|html)$/i;a.addEventListener("click", function (a) {
+                d = a.target;while (!f.test(d.nodeName)) {
+                    d = d.parentNode;
+                }"href" in d && (d.href.indexOf("http") || ~d.href.indexOf(e.host)) && (a.preventDefault(), e.href = d.href);
+            }, !1);
+        }
+    })(document, window.navigator, "standalone");
 
-  document.addEventListener("touchmove", function (event) {
-    event.preventDefault();
-  }, false);
+    paceOptions = {
+        ajax: false, // disabled
+        document: false, // disabled
+        eventLag: false, // disabled
+        elements: {
+            selectors: ['#main']
+        }
+    };
+
+    $('#lendsend').click(function (event) {
+
+        var phoneno = /^09\d{8}$/;
+        var $phone = $('#tel').val();
+
+        if ($phone == '' || !$phone.match(phoneno)) {
+            new Noty({
+                type: 'error',
+                layout: 'bottomCenter',
+                text: '請填寫正確的手機號碼',
+                timeout: 2000,
+                theme: 'nest',
+                animation: {
+                    open: 'animated fadeInUp', // Animate.css class names
+                    close: 'animated fadeOutDown' // Animate.css class names
+                }
+            }).show();
+            return false;
+            event.preventDefault();
+        }
+        event.preventDefault();
+
+        $.ajax({
+            url: 'lendPhoneCheck',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                phone: $phone
+            },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function success(response) {
+                $('.num').fadeIn('2000', function () {
+                    $(this).removeClass('.container-hideden');
+                    $('#tel').attr('disabled', 'disabled');
+                    $('#lendsend-step2').removeClass('container-hidden');
+                    $('#lendsend').addClass('container-hidden');
+                });
+                new Noty({
+                    type: 'success',
+                    layout: 'bottomCenter',
+                    text: response.success,
+                    timeout: 2000,
+                    theme: 'nest',
+                    animation: {
+                        open: 'animated fadeInUp', // Animate.css class names
+                        close: 'animated fadeOutDown' // Animate.css class names
+                    }
+                }).show();
+            },
+            error: function error(response) {
+
+                var n = new Noty({
+                    type: 'error',
+                    layout: 'bottomCenter',
+                    text: response.responseJSON.error + '<br>' + $phone,
+                    buttons: [Noty.button('是', 'btn btn-success info-btn', function () {
+                        n.close();
+                        $.ajax({
+                            url: 'customerCreate',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {
+                                phone: $phone
+                            },
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function success(response) {
+                                $('.num').fadeIn('2000', function () {
+                                    $(this).removeClass('.container-hideden');
+                                    $('#tel').attr('disabled', 'disabled');
+                                    $('#lendsend-step2').removeClass('container-hidden');
+                                    $('#lendsend').addClass('container-hidden');
+                                });
+                                new Noty({
+                                    type: 'success',
+                                    layout: 'bottomCenter',
+                                    text: response.success,
+                                    timeout: 1000,
+                                    theme: 'nest',
+                                    animation: {
+                                        open: 'animated fadeInUp', // Animate.css class names
+                                        close: 'animated fadeOutDown' // Animate.css class names
+                                    }
+                                }).show();
+                            },
+                            error: function error(response) {
+
+                                new Noty({
+                                    type: 'error',
+                                    layout: 'bottomCenter',
+                                    text: response.responseJSON.error,
+                                    timeout: 1500,
+                                    theme: 'nest',
+                                    animation: {
+                                        open: 'animated fadeInUp', // Animate.css class names
+                                        close: 'animated fadeOutDown' // Animate.css class names
+                                    }
+                                }).show();
+                            }
+                        });
+                    }, {
+                        id: 'button1',
+                        'data-status': 'ok'
+                    }), Noty.button('否', 'btn btn-danger info-btn', function () {
+                        n.close();
+                    })],
+                    theme: 'nest',
+                    animation: {
+                        open: 'animated fadeInUp', // Animate.css class names
+                        close: 'animated fadeOutDown' // Animate.css class names
+                    }
+                }).show();
+            }
+        });
+    });
+
+    $('#lendsend-step2').click(function (event) {
+
+        var numno = /^\d{3}$/;
+
+        var $phone = $('#tel').val();
+        var $number = $('#num').val();
+        if ($phone == '' || $number == '' || !$number.val().match(numno)) {
+            new Noty({
+                type: 'error',
+                layout: 'bottomCenter',
+                text: '請填寫正確杯子編號',
+                timeout: 2000,
+                theme: 'nest',
+                animation: {
+                    open: 'animated fadeInUp', // Animate.css class names
+                    close: 'animated fadeOutDown' // Animate.css class names
+                }
+            }).show();
+            return false;
+            event.preventDefault();
+        }
+        event.preventDefault();
+        $.ajax({
+            url: 'lendContainerCreate',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                phone: $phone,
+                number: $number
+            },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function success(response) {
+                $('#num').val('');
+                new Noty({
+                    type: 'success',
+                    layout: 'bottomCenter',
+                    text: response.success,
+                    timeout: 1500,
+                    theme: 'nest',
+                    animation: {
+                        open: 'animated fadeInUp', // Animate.css class names
+                        close: 'animated fadeOutDown' // Animate.css class names
+                    }
+                }).show();
+            },
+            error: function error(response) {
+
+                new Noty({
+                    type: 'error',
+                    layout: 'bottomCenter',
+                    text: response.responseJSON.error,
+                    timeout: 1500,
+                    theme: 'nest',
+                    animation: {
+                        open: 'animated fadeInUp', // Animate.css class names
+                        close: 'animated fadeOutDown' // Animate.css class names
+                    }
+                }).show();
+            }
+
+        });
+    });
 });
 
 /***/ }),
