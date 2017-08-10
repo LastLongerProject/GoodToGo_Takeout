@@ -11,15 +11,17 @@
 |
 */
 
-Route::get('/', function(){ return 123; });
-Route::get('/{slug}', 'ListController@index')->name('list');
+Route::get('/', function(){
+	abort(404);
+});
 
-Route::get('/{slug}/lend', 'LendController@index')->name('lend');
-Route::post('/{slug}/lendPhoneCheck', 'LendController@lendPhoneCheck');
+Route::get('/vendor/{slug}', 'ListController@index')->name('list');
 
-Route::post('/{slug}/lendContainerCreate', 'LendController@lendContainerCreate');
+Route::get('/vendor/{slug}/lend', 'LendController@index')->name('lend');
+Route::post('/vendor/{slug}/lendPhoneCheck', 'LendController@lendPhoneCheck');
+Route::post('/vendor/{slug}/lendContainerCreate', 'LendController@lendContainerCreate');
+Route::post('/vendor/{slug}/customerCreate', 'LendController@customerCreate');
 
-Route::post('/{slug}/customerCreate', 'LendController@customerCreate');
+Route::get('/vendor/{slug}/recover', 'RecoverController@index')->name('recover');
 
-Route::get('/{slug}/recover', 'RecoverController@index')->name('recover');
-
+Route::get('/backstage', 'AdminController@index')->name('admin');
