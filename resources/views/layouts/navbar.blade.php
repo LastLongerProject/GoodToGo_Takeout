@@ -5,10 +5,10 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>     --}}
-    <a class="navbar-brand" href="{{ url('/'.session()->get('vendor')->slug) }}">@yield('title')</a>
+    <a class="navbar-brand" href="{{ url('/vendor/'.$vendor->slug) }}">@yield('title')</a>
   </div>
   {{-- <div class="navbar-collapse collapse"> --}}
-    @if( URL::current() != url('/'.session()->get('vendor')->slug))
+    @if( URL::current() != url('/vendor/'.$vendor->slug))
 
 
     <ul class="nav navbar-nav navbar-left">

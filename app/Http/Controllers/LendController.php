@@ -11,7 +11,8 @@ use App\Container;
 class LendController extends Controller
     {
         public function index($slug){
-            return view('lend');
+    		$vendor = Vendor::where('slug', $slug)->first();
+            return view('lend')->with('vendor',$vendor);
         }
 
         public function lendPhoneCheck(request $request ,$slug) {

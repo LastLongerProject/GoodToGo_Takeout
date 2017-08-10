@@ -9,9 +9,10 @@ class ListController extends Controller
 {
     //
     public function index($slug) {
-    		$vendor = Vendor::where('slug', $slug)->first();
-    		session(['vendor' => $vendor ]);
-    	    return view('list');
+
+		$vendor = Vendor::where('slug', $slug)->first();
+		return view('list')->with('vendor', $vendor);
+
     }
 
 }
