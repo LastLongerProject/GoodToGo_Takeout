@@ -9212,17 +9212,30 @@ button.close {
 
 #noty_layout__bottomCenter,
 #noty_layout__center {
-  width: calc(25vh);
-  height: calc(25vh);
+  width: calc(24vh);
+  height: calc(24vh);
 }
 
 .noty_layout .noty_bar {
-  width: calc(25vh);
-  height: calc(25vh);
+  width: calc(24vh);
+  height: calc(24vh);
 }
 
-.noty_layout .noty_bar .noty_body {
-  line-height: cacl(25vh);
+.glyphicon-ring {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 4px solid white;
+  color: white;
+  display: inline-table;
+  text-align: center;
+  margin: 12px auto;
+}
+
+.glyphicon-ring .glyphicon-bordered {
+  font-size: 20px;
+  vertical-align: middle;
+  display: table-cell;
 }
 
 .info-btn {

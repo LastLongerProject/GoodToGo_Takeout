@@ -1,5 +1,5 @@
 @extends('partials/main')
-@section('title','回收杯子')
+@section('title','回收杯杯')
 @section('content')
 <div class="container disable-select">
 	<form role="form">

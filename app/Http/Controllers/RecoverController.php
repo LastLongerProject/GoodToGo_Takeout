@@ -25,7 +25,7 @@ class RecoverController extends Controller
 
         if($recover_container){
             if($recover_container->created_at > $container->created_at){
-                return \Response::json(['error' => '杯子編號 : '.$container->number.' 已經歸還'], 500);
+                return \Response::json(['error' => '杯子編號 : <br>'.$container->number.' 已經被歸還過'], 500);
             }
         }
 
@@ -42,11 +42,11 @@ class RecoverController extends Controller
                 $o_container->status = 0;
                 
                 if($o_container->save()){
-    		return \Response::json(['success' => '杯子編號 : '.$container->number.' 回收完成'], 200);
+    		return \Response::json(['success' => '杯子編號 : <br>'.$container->number.' 回收完成'], 200);
                 }
     	}
     	else {
-    		return \Response::json(['error' => '找不到杯子 : '.$request->number.' 的紀錄'], 404);
+    		return \Response::json(['error' => '杯子編號 : <br>'.$request->number.' 沒有被租借'], 404);
     	}
     }
 }

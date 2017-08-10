@@ -56,11 +56,11 @@ class LendController extends Controller
 
 
                 if(($recover_container && $recover_container->created_at < $container->created_at)){
-                    return \Response::json(['error' => '杯子編號 : '.$container->number.' 已經被借走'], 500);
+                    return \Response::json(['error' => '杯子編號 :<br> '.$container->number.' 已經被借走'], 500);
                 }
 
                 if(!$recover_container && $container){
-                    return \Response::json(['error' => '杯子編號 : '.$container->number.' 已經被借走'], 500);
+                    return \Response::json(['error' => '杯子編號 :<br> '.$container->number.' 已經被借走'], 500);
                 }
 
 
@@ -78,7 +78,7 @@ class LendController extends Controller
             $n_container->status = 1;
 
             if($n_container->save()){
-                return \Response::json(['success' => '杯子編號 : '.$n_container->number.' 紀錄成功'], 200);
+                return \Response::json(['success' => '杯子編號 :<br> '.$n_container->number.' 紀錄成功'], 200);
             }
             else {
                 return \Response::json(['error' => '發生錯誤'], 500);
