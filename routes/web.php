@@ -23,5 +23,6 @@ Route::post('/vendor/{slug}/lendContainerCreate', 'LendController@lendContainerC
 Route::post('/vendor/{slug}/customerCreate', 'LendController@customerCreate');
 
 Route::get('/vendor/{slug}/recover', 'RecoverController@index')->name('recover');
+Route::post('/vendor/{slug}/recoverContainer', 'RecoverController@recoverContainer');
 
 Route::get('/backstage', 'AdminController@index')->name('admin');

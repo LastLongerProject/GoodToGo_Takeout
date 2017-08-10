@@ -118,7 +118,6 @@ $(document).ready(function () {
     })(document, window.navigator, "standalone");
 
     paceOptions = {
-        ajax: false, // disabled
         document: false, // disabled
         eventLag: false, // disabled
         elements: {
@@ -134,7 +133,7 @@ $(document).ready(function () {
         if ($phone == '' || !$phone.match(phoneno)) {
             new Noty({
                 type: 'error',
-                layout: 'bottomCenter',
+                layout: 'center',
                 text: '請填寫正確的手機號碼',
                 timeout: 2000,
                 theme: 'nest',
@@ -167,7 +166,7 @@ $(document).ready(function () {
                 });
                 new Noty({
                     type: 'success',
-                    layout: 'bottomCenter',
+                    layout: 'center',
                     text: response.success,
                     timeout: 2000,
                     theme: 'nest',
@@ -181,7 +180,7 @@ $(document).ready(function () {
 
                 var n = new Noty({
                     type: 'error',
-                    layout: 'bottomCenter',
+                    layout: 'center',
                     text: response.responseJSON.error + '<br>' + $phone,
                     buttons: [Noty.button('是', 'btn btn-success info-btn', function () {
                         n.close();
@@ -204,7 +203,7 @@ $(document).ready(function () {
                                 });
                                 new Noty({
                                     type: 'success',
-                                    layout: 'bottomCenter',
+                                    layout: 'center',
                                     text: response.success,
                                     timeout: 1000,
                                     theme: 'nest',
@@ -218,7 +217,7 @@ $(document).ready(function () {
 
                                 new Noty({
                                     type: 'error',
-                                    layout: 'bottomCenter',
+                                    layout: 'center',
                                     text: response.responseJSON.error,
                                     timeout: 1500,
                                     theme: 'nest',
@@ -247,14 +246,16 @@ $(document).ready(function () {
 
     $('#lendsend-step2').click(function (event) {
 
+        event.preventDefault();
+
         var numno = /^\d{3}$/;
 
         var $phone = $('#tel').val();
         var $number = $('#num').val();
-        if ($phone == '' || $number == '' || !$number.val().match(numno)) {
+        if ($phone == '' || $number == '' || !$number.match(numno)) {
             new Noty({
                 type: 'error',
-                layout: 'bottomCenter',
+                layout: 'center',
                 text: '請填寫正確杯子編號',
                 timeout: 2000,
                 theme: 'nest',
@@ -266,7 +267,7 @@ $(document).ready(function () {
             return false;
             event.preventDefault();
         }
-        event.preventDefault();
+
         $.ajax({
             url: 'lendContainerCreate',
             type: 'POST',
@@ -282,7 +283,7 @@ $(document).ready(function () {
                 $('#num').val('');
                 new Noty({
                     type: 'success',
-                    layout: 'bottomCenter',
+                    layout: 'center',
                     text: response.success,
                     timeout: 1500,
                     theme: 'nest',
@@ -296,7 +297,69 @@ $(document).ready(function () {
 
                 new Noty({
                     type: 'error',
-                    layout: 'bottomCenter',
+                    layout: 'center',
+                    text: response.responseJSON.error,
+                    timeout: 1500,
+                    theme: 'nest',
+                    animation: {
+                        open: 'animated fadeInUp', // Animate.css class names
+                        close: 'animated fadeOutDown' // Animate.css class names
+                    }
+                }).show();
+            }
+
+        });
+    });
+    $('#recoversend').click(function (event) {
+        event.preventDefault();
+
+        var numno = /^\d{3}$/;
+        var $number = $('#num').val();
+        if ($number == '' || !$number.match(numno)) {
+            new Noty({
+                type: 'error',
+                layout: 'center',
+                text: '請填寫正確杯子編號',
+                timeout: 2000,
+                theme: 'nest',
+                animation: {
+                    open: 'animated fadeInUp', // Animate.css class names
+                    close: 'animated fadeOutDown' // Animate.css class names
+                }
+            }).show();
+            return false;
+            event.preventDefault();
+        }
+
+        $.ajax({
+            url: 'recoverContainer',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                number: $number
+            },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function success(response) {
+                $('#num').val('');
+                new Noty({
+                    type: 'success',
+                    layout: 'center',
+                    text: response.success,
+                    timeout: 1500,
+                    theme: 'nest',
+                    animation: {
+                        open: 'animated fadeInUp', // Animate.css class names
+                        close: 'animated fadeOutDown' // Animate.css class names
+                    }
+                }).show();
+            },
+            error: function error(response) {
+
+                new Noty({
+                    type: 'error',
+                    layout: 'center',
                     text: response.responseJSON.error,
                     timeout: 1500,
                     theme: 'nest',

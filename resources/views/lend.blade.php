@@ -14,7 +14,7 @@
           <input type="tel" class="form-control gtg-input" id="num" placeholder="杯子編號" maxlength="3" minlength="1" required>
         </div>
         <div class="col-md-4 col-md-offset-4">
-         <button type="submit" class="gtg-button button-small container-hidden" id="lendsend-step2">紀錄</button>
+         <button type="submit" class="gtg-button button-small container-hidden" id="lendsend-step2">記錄</button>
         <button type="submit" class="gtg-button button-small" id="lendsend">查詢</button>
         </div>
       </form>

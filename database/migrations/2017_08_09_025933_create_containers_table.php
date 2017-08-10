@@ -15,14 +15,18 @@ class CreateContainersTable extends Migration
     {
         Schema::create('containers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('number');
+            $table->string('number');
                 
             $table->integer('vendor_id')->unsigned();
             $table->foreign('vendor_id')->references('id')->on('vendors');
 
+            $table->text('vendor_name');
+
             $table->integer('customer_id')->unsigned();
             $table->foreign('customer_id')->references('id')->on('customers');
             
+            $table->string('customer_phone');
+
             $table->boolean('status');
             $table->timestamps();
         });

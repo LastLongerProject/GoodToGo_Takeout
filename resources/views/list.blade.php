@@ -6,9 +6,9 @@
 	<div class="row">
 		
 		<div class="col-md-4 col-md-offset-4">
-			<a href="{{ Route('lend',['slug' => $vendor->slug]) }}"><button class="gtg-button">租借杯子</button></a>
-			<a href="{{ Route('recover',['slug' => $vendor->slug ]) }}"><button class="gtg-button">回收杯子</button></a>
-			<a href=""><button class="gtg-button">杯杯狀態</button></a>
+			<a href="{{ Route('lend',['slug' => $vendor->slug]) }}"><button class="gtg-button">租借杯杯</button></a>
+			<a href="{{ Route('recover',['slug' => $vendor->slug ]) }}"><button class="gtg-button">回收杯杯</button></a>
+	{{-- 		<a href=""><button class="gtg-button">杯杯狀態</button></a> --}}
 		</div>
 	</div>
 </div>
