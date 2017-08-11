@@ -15,7 +15,8 @@ Route::get('/', function(){
 	abort(404);
 });
 
-Route::get('/vendor/{slug}', 'ListController@index')->name('list');
+Route::get('/vendor/{slug}', 'MainController@index')->name('main');
+
 
 Route::get('/vendor/{slug}/lend', 'LendController@index')->name('lend');
 Route::post('/vendor/{slug}/lendPhoneCheck', 'LendController@lendPhoneCheck');
@@ -24,5 +25,9 @@ Route::post('/vendor/{slug}/customerCreate', 'LendController@customerCreate');
 
 Route::get('/vendor/{slug}/recover', 'RecoverController@index')->name('recover');
 Route::post('/vendor/{slug}/recoverContainer', 'RecoverController@recoverContainer');
+
+Route::get('/vendor/{slug}/status', 'StatusController@index')->name('status');
+
+
 
 Route::get('/backstage', 'AdminController@index')->name('admin');

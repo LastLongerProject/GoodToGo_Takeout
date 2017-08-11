@@ -1,4 +1,4 @@
-@extends('partials/main')
+@extends('partials/app')
 @section('title','店鋪系統')
 @section('content')
 
@@ -8,7 +8,7 @@
 		<div class="col-md-4 col-md-offset-4 text-center">
 			<a href="{{ Route('lend',['slug' => $vendor->slug]) }}"><button class="gtg-button">租借杯杯</button></a>
 			<a href="{{ Route('recover',['slug' => $vendor->slug ]) }}"><button class="gtg-button">回收杯杯</button></a>
-			<a href=""><button class="gtg-button">杯杯狀態</button></a>
+			<a href="{{ Route('status',['slug' => $vendor->slug ]) }}"><button class="gtg-button">杯杯狀態</button></a>
 		</div>
 
 	</div>
@@ -19,6 +19,7 @@
     type: 'info',
     layout: 'bottomCenter',
     text: '{{ $vendor->name }}',
+    closeWith: false,
     theme: 'nest',
       animation: {
         open: 'animated fadeInUp', // Animate.css class names
