@@ -19,8 +19,4 @@
         </div>
       </form>
 </div>
-@section('js')
-
-@stop
-
 @stop

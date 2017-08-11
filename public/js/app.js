@@ -134,8 +134,8 @@ $(document).ready(function () {
             new Noty({
                 type: 'error',
                 layout: 'center',
-                text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>請填寫正確的手機號碼',
-                timeout: 2000,
+                text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>請填寫正確的手機號碼<div class="info-div">好</div>',
+                // timeout: 2000,
                 theme: 'nest',
                 animation: {
                     open: 'animated fadeInUp', // Animate.css class names
@@ -181,7 +181,8 @@ $(document).ready(function () {
                 var n = new Noty({
                     type: 'error',
                     layout: 'center',
-                    text: response.responseJSON.error + '<br>' + $phone,
+                    closeWith: false,
+                    text: response.responseJSON.error + '<br><br>' + $phone,
                     buttons: [Noty.button('是', 'btn btn-success info-btn', function () {
                         n.close();
                         $.ajax({
@@ -256,8 +257,8 @@ $(document).ready(function () {
             new Noty({
                 type: 'error',
                 layout: 'center',
-                text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>請填寫正確杯子編號',
-                timeout: 2000,
+                text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>請填寫正確杯子編號<div class="info-div">好</div>',
+                // timeout: 2000,
                 theme: 'nest',
                 animation: {
                     open: 'animated fadeInUp', // Animate.css class names
@@ -284,8 +285,8 @@ $(document).ready(function () {
                 new Noty({
                     type: 'success',
                     layout: 'center',
-                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-ok glyphicon-bordered"></span></div><br>' + response.success,
-                    timeout: 1500,
+                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-ok glyphicon-bordered"></span></div><br>' + response.success + '<div class="info-div">好</div>',
+                    // timeout: 1500,
                     theme: 'nest',
                     animation: {
                         open: 'animated fadeInUp', // Animate.css class names
@@ -298,8 +299,8 @@ $(document).ready(function () {
                 new Noty({
                     type: 'error',
                     layout: 'center',
-                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>' + response.responseJSON.error,
-                    timeout: 2000,
+                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>' + response.responseJSON.error + '<div class="info-div">好</div>',
+                    // timeout: 2000,
                     theme: 'nest',
                     animation: {
                         open: 'animated fadeInUp', // Animate.css class names
@@ -319,8 +320,8 @@ $(document).ready(function () {
             new Noty({
                 type: 'error',
                 layout: 'center',
-                text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>請填寫正確杯子編號',
-                timeout: 2000,
+                text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>請填寫正確杯子編號<div class="info-div">好</div>',
+                // timeout: 2000,
                 theme: 'nest',
                 animation: {
                     open: 'animated fadeInUp', // Animate.css class names
@@ -346,8 +347,8 @@ $(document).ready(function () {
                 new Noty({
                     type: 'success',
                     layout: 'center',
-                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-ok glyphicon-bordered"></span></div><br>' + response.success,
-                    timeout: 1500,
+                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-ok glyphicon-bordered"></span></div><br>' + response.success + '<div class="info-div">好</div>',
+                    // timeout: 1500,
                     theme: 'nest',
                     animation: {
                         open: 'animated fadeInUp', // Animate.css class names
@@ -360,8 +361,8 @@ $(document).ready(function () {
                 new Noty({
                     type: 'error',
                     layout: 'center',
-                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>' + response.responseJSON.error,
-                    timeout: 2000,
+                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>' + response.responseJSON.error + '<div class="info-div">好</div>',
+                    // timeout: 2000,
                     theme: 'nest',
                     animation: {
                         open: 'animated fadeInUp', // Animate.css class names

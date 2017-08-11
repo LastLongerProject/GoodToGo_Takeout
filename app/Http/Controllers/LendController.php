@@ -21,7 +21,7 @@ class LendController extends Controller
                     return \Response::json(['success' => '此用戶已經註冊'], 200); 
                 }
                 else{
-                      return \Response::json(['error' => '此用戶還未註冊，是否進行註冊?'], 404); 
+                      return \Response::json(['error' => '用戶還未註冊，是否進行註冊?'], 404); 
                 }
             }
         else {

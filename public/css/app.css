@@ -9206,19 +9206,27 @@ button.close {
   font-display: swap;
 }
 
+#noty_layout__center {
+  width: calc(36vh);
+  height: calc(30vh);
+}
+
+#noty_layout__center .noty_layout .noty_type__error {
+  width: calc(36vh);
+  height: calc(30vh);
+}
+
+.info-div {
+  margin: 16px auto;
+  border-top: 1px solid #e8e8e8;
+  width: 75%;
+  padding-top: 12px;
+  display: inline-block;
+  font-size: 1.1em;
+}
+
 .container-hidden {
   display: none;
-}
-
-#noty_layout__bottomCenter,
-#noty_layout__center {
-  width: calc(24vh);
-  height: calc(24vh);
-}
-
-.noty_layout .noty_bar {
-  width: calc(24vh);
-  height: calc(24vh);
 }
 
 .glyphicon-ring {
@@ -9229,7 +9237,7 @@ button.close {
   color: white;
   display: inline-table;
   text-align: center;
-  margin: 12px auto;
+  margin: 14px auto;
 }
 
 .glyphicon-ring .glyphicon-bordered {
@@ -9240,8 +9248,8 @@ button.close {
 
 .info-btn {
   display: inline-block;
-  width: 46%;
-  margin: 6px;
+  width: 42%;
+  margin: 6px 8px;
 }
 
 .noty_body {
