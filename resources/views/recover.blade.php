@@ -1,4 +1,4 @@
-@extends('partials/main')
+@extends('partials/app')
 @section('title','回收杯杯')
 @section('content')
 <div class="container disable-select">
