@@ -9348,6 +9348,57 @@ body {
   margin-top: 8px;
 }
 
+.status-colum .container-status {
+  padding-top: calc(2vh);
+  color: #49494b;
+  background-color: #fff;
+  -webkit-box-shadow: 2px 2px 2px 2px #d9dce0;
+          box-shadow: 2px 2px 2px 2px #d9dce0;
+  height: calc(40vh - 50px);
+}
+
+.status-colum .container-status p {
+  font-size: 1.2em;
+  font-weight: 300;
+}
+
+.status-colum .container-status h1 {
+  font-size: 4.2em;
+  font-weight: 400;
+}
+
+.container-lr {
+  margin-top: 12px;
+  -webkit-box-shadow: 2px 2px 2px 2px #d9dce0;
+          box-shadow: 2px 2px 2px 2px #d9dce0;
+  color: #fff;
+  height: calc(24vh);
+  padding: 10px 20px;
+}
+
+.container-lr p {
+  font-size: 1.3em;
+  font-weight: 300;
+}
+
+.container-lr h1 {
+  font-size: 5.5em;
+}
+
+.container-lr h1 span {
+  font-size: .3em;
+  font-weight: 300;
+  margin-left: 10px;
+}
+
+.lr-blue {
+  background-color: #66c7e0;
+}
+
+.lr-palm {
+  background-color: #a3a26a;
+}
+
 .button-small {
   height: calc(9vh);
   font-size: 1.1em;

@@ -11,23 +11,26 @@
 |
 */
 
+/* Vendor List Route*/
 Route::get('/', function(){
 	abort(404);
 });
 
+/* Vendor Menu Route */
 Route::get('/vendor/{slug}', 'MainController@index')->name('main');
 
-
+/* Lend Container Route */
 Route::get('/vendor/{slug}/lend', 'LendController@index')->name('lend');
 Route::post('/vendor/{slug}/lendPhoneCheck', 'LendController@lendPhoneCheck');
 Route::post('/vendor/{slug}/lendContainerCreate', 'LendController@lendContainerCreate');
 Route::post('/vendor/{slug}/customerCreate', 'LendController@customerCreate');
 
+/* Recover Container Route */
 Route::get('/vendor/{slug}/recover', 'RecoverController@index')->name('recover');
 Route::post('/vendor/{slug}/recoverContainer', 'RecoverController@recoverContainer');
 
+/* Vendor Status Route */
 Route::get('/vendor/{slug}/status', 'StatusController@index')->name('status');
 
-
-
+/* Admin Route */
 Route::get('/backstage', 'AdminController@index')->name('admin');
