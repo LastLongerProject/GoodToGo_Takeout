@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Vendor;
 use App\Customer;
 use App\Container;
+use App\Container_type;
 
 class RecoverController extends Controller
 {
@@ -32,13 +33,15 @@ class RecoverController extends Controller
     	if($container){
                 $vendor = Vendor::where('slug',$slug)->first();
                 $customer = Customer::find($container->customer_id);
+                $container_type = Container_type::find($request->number);
 
                 $o_container = new Container;
                 $o_container->vendor_id = $vendor->id;
                 $o_container->customer_id = $customer->id;
-                $o_container->number = $request->number; 
-                $o_container->vendor_name = $vendor->name; 
-                $o_container->customer_phone = $customer->phone; 
+                $o_container->number = $request->number;
+                $o_container->vendor_name = $vendor->name;
+                $o_container->customer_phone = $customer->phone;
+                $o_container->container_type_id = $container_type->id;
                 $o_container->status = 0;
                 
                 if($o_container->save()){

@@ -14,14 +14,21 @@ class AdminController extends Controller
 
     public function readExcel(){
     	$fileName = "container_type.xlsx";
+        $status = "成功";
 		Excel::filter('chunk')->load('storage/files/'.$fileName)->chunk(250, function($results) {
             foreach ($results as $row) {
                 $container_type = Container_type::firstOrCreate(['id' => $row->名稱]);
                 $container_type->id = $row->名稱;
                 $container_type->type = $row->類型;
                 $container_type->decoration = $row->樣式;
-                $container_type->save();
+
+                if($container_type->save()){ continue;}
+                else{ break; $status="失敗"; return "失敗";}
+
 	            }
+
 		});
+   return view("container_type")->with('status',$status);
+         
 	}
 }

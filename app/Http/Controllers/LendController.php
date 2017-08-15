@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Vendor;
 use App\Customer;
 use App\Container;
+use App\Container_type;
 
 class LendController extends Controller
     {
@@ -68,14 +69,15 @@ class LendController extends Controller
             if($request->phone && $request->number){
             $vendor = Vendor::where('slug',$slug)->first();
             $customer = Customer::where('phone',$request->phone)->first();
-
+            $container_type = Container_type::find($request->number);
             
             $n_container = new Container;
             $n_container->vendor_id = $vendor->id;
             $n_container->customer_id = $customer->id;
-            $n_container->number = $request->number; 
-            $n_container->vendor_name = $vendor->name; 
-            $n_container->customer_phone = $customer->phone; 
+            $n_container->number = $request->number;
+            $n_container->vendor_name = $vendor->name;
+            $n_container->customer_phone = $customer->phone;
+            $n_container->container_type_id = $container_type->id;
             $n_container->status = 1;
 
             if($n_container->save()){
