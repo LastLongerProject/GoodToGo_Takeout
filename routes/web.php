@@ -34,3 +34,4 @@ Route::get('/vendor/{slug}/status', 'StatusController@index')->name('status');
 
 /* Admin Route */
 Route::get('/backstage', 'AdminController@index')->name('admin');
+Route::get('/backstage/container_type', 'AdminController@readExcel');

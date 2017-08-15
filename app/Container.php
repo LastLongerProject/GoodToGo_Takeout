@@ -18,4 +18,8 @@ class Container extends Model
     {
         return $this->belongsTo('App\Vendor');
     }
+        public function container_type()
+    {
+        return $this->hasOne('App\Vendor');
+    }
 }

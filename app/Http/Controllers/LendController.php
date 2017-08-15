@@ -52,6 +52,7 @@ class LendController extends Controller
             public function lendContainerCreate(request $request, $slug){
 
             $container = Container::where('number', $request->number)->where('status',1)->latest()->first();
+            // $container = Container::customer()->where('number', $request->number)->where('status',1)->latest()->first();
             $recover_container = Container::where('number', $request->number)->where('status',0)->latest()->first();
 
 
