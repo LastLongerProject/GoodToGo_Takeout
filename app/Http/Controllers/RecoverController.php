@@ -21,7 +21,8 @@ class RecoverController extends Controller
     public function recoverContainer(request $request, $slug){
 
     	$container = Container::where('number', $request->number)->where('status',1)->latest()->first();
-
+        $container_type = Container_type::find($request->number);
+        
         $recover_container = Container::where('number', $request->number)->where('status',0)->latest()->first();
 
         if($recover_container){
@@ -29,11 +30,13 @@ class RecoverController extends Controller
                 return \Response::json(['error' => '杯子編號 : <br>'.$container->number.' 沒有被租借'], 404);
             }
         }
-
+        if(!$container_type){
+                return \Response::json(['error' => '編號'. $request->number .'的杯子不存在'], 404);
+        }
     	if($container){
                 $vendor = Vendor::where('slug',$slug)->first();
                 $customer = Customer::find($container->customer_id);
-                $container_type = Container_type::find($request->number);
+                
 
                 $o_container = new Container;
                 $o_container->vendor_id = $vendor->id;

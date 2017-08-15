@@ -71,6 +71,10 @@ class LendController extends Controller
             $customer = Customer::where('phone',$request->phone)->first();
             $container_type = Container_type::find($request->number);
             
+            if(!$container_type){
+                return \Response::json(['error' => '編號'. $request->number .'的杯子不存在'], 404);
+            }
+
             $n_container = new Container;
             $n_container->vendor_id = $vendor->id;
             $n_container->customer_id = $customer->id;
