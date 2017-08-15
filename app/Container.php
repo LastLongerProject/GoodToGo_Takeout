@@ -20,6 +20,6 @@ class Container extends Model
     }
         public function container_type()
     {
-        return $this->hasOne('App\Vendor');
+        return $this->hasOne('App\Container_type');
     }
 }
