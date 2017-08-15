@@ -17,7 +17,8 @@ class CreateVendorsTable extends Migration
             $table->increments('id');
             $table->text('name');
             $table->string('slug')->unique();
-            $table->integer('possess');
+            $table->integer('possess_480');
+            $table->integer('possess_360');
             $table->timestamps();
         });
     }
