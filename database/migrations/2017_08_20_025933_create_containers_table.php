@@ -27,6 +27,9 @@ class CreateContainersTable extends Migration
             
             $table->string('customer_phone');
 
+            $table->integer('container_type_id')->unsigned();
+            $table->foreign('container_type_id')->references('id')->on('container_types');
+            
             $table->boolean('status');
             $table->timestamps();
         });

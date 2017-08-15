@@ -8,5 +8,4 @@ class Vendor extends Model
 {
 	protected $table = 'vendors';
 	protected $fillable = ['name','slug','possess'];
-
 }
