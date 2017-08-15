@@ -12,9 +12,7 @@
 */
 
 /* Vendor List Route*/
-Route::get('/', function(){
-	abort(404);
-});
+Route::get('/', 'AdminController@vendorList');
 
 /* Vendor Menu Route */
 Route::get('/vendor/{slug}', 'MainController@index')->name('main');
