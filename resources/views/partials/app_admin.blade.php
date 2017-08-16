@@ -70,6 +70,7 @@
     <script type="text/javascript" src="{{ asset('/js/pace.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+    <style>body{padding-top: 52px;}</style>
 </head>
 <body id="main">
     @yield('content')
