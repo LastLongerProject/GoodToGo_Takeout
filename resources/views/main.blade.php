@@ -1,5 +1,5 @@
 @extends('partials/app')
-@section('title','店鋪系統')
+@section('title','好盒器店鋪系統')
 @section('content')
 
 <div class="container disable-select">
