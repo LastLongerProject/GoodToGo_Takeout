@@ -21,10 +21,6 @@ window.Noty = require('noty');
 //     el: '#app'
 // });
 
-
-
-$(document).ready(function() {
-
 document.addEventListener("touchmove", function(event){
     event.preventDefault();
 }, false);
@@ -39,19 +35,13 @@ paceOptions = {
   }
 };
 
-
-
-
-
+$(document).ready(function() {
 
 
     $('#lendsend').click(function(event) {
 
       var phoneno = /^09\d{8}$/;
       var $phone = $('#tel').val();
-
-
-
 
         if ($phone == '' || !$phone.match(phoneno)) {
             new Noty({
