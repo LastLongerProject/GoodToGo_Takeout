@@ -10,8 +10,8 @@
           <input type="tel" id="tel" class="form-control gtg-input" placeholder="手機號碼 (ex.0978123123)" maxlength="10" minlength="10" required>
         </div>
         <div class="form-group col-md-4 col-md-offset-4 num container-hidden">
-          <label for="num" class="gtg-title">杯子編號 (ex.001)</label>
-          <input type="tel" class="form-control gtg-input" id="num" placeholder="杯子編號" maxlength="3" minlength="1" required>
+          <label for="num" class="gtg-title">杯子編號</label>
+          <input type="tel" class="form-control gtg-input" id="num" placeholder="杯子編號 (ex.0001)" maxlength="4" minlength="4" required>
         </div>
         <div class="col-md-4 col-md-offset-4">
          <button type="submit" class="gtg-button button-small container-hidden" id="lendsend-step2">記錄</button>

@@ -174,7 +174,7 @@ $(document).ready(function() {
 
         event.preventDefault();
 
-        var numno = /^\d{3}$/;
+        var numno = /^\d{4}$/;
 
         var $phone = $('#tel').val();
         var $number = $('#num').val();
@@ -239,7 +239,7 @@ $(document).ready(function() {
 $('#recoversend').click(function(event) {
       event.preventDefault();
 
-      var numno = /^\d{3}$/;
+      var numno = /^\d{4}$/;
       var $number = $('#num').val();
       if ($number == '' || !$number.match(numno)) {
             new Noty({
