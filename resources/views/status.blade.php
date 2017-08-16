@@ -19,8 +19,6 @@
              	<p>個</p>
             </div>
         </div>
-
-
         <div class="col-xs-12">
 			<div class="container-lr lr-blue">
         		<p>今日累積借出</p>
