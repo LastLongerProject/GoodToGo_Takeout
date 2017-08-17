@@ -82,7 +82,7 @@ $(document).ready(function() {
                     type: 'success',
                     layout: 'center',
                     text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-ok glyphicon-bordered"></span></div><br>'+response.success,
-                    timeout: 2000,
+                    timeout: 1000,
                     theme: 'nest',
                     animation: {
                         open: 'animated fadeInUp', // Animate.css class names
