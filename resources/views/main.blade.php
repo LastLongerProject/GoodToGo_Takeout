@@ -2,7 +2,7 @@
 @section('title','好盒器店鋪系統')
 @section('content')
 
-<div class="container disable-select">
+<div class="container">
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4 text-center">
 			<a href="{{ Route('lend',['slug' => $vendor->slug]) }}"><button class="gtg-button">租借杯杯</button></a>

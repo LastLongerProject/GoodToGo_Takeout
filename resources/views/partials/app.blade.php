@@ -71,7 +71,7 @@
     <link rel="stylesheet" href="{{ asset('/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
 </head>
-<body id="main">
+<body id="main" class="disable-select">
     @include('layouts/navbar')
     @yield('content')
 

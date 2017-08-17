@@ -1,7 +1,7 @@
 @extends('partials/app')
 @section('title','回收杯杯')
 @section('content')
-<div class="container disable-select">
+<div class="container">
 	<form role="form">
         <div class="form-group col-md-4 col-md-offset-4">
           <label for="num" class="gtg-title">杯子編號</label>

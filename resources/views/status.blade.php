@@ -1,7 +1,7 @@
 @extends('partials/app')
 @section('title','杯杯狀態')
 @section('content')
-<div class="container disable-select">
+<div class="container">
     <div class="row">
         <div class="col-xs-6 status-colum text-center">
             <div class="container-status">

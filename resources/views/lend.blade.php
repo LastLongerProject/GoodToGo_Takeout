@@ -1,7 +1,7 @@
 @extends('partials/app')
 @section('title','租借杯杯')
 @section('content')
-<div class="container disable-select">
+<div class="container">
 
 	<form role="form" id="lendform">
 		{{ csrf_field() }}

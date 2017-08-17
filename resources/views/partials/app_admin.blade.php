@@ -72,7 +72,7 @@
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <style>body{padding-top: 52px;}</style>
 </head>
-<body id="main">
+<body id="main" class="disable-select">
     @yield('content')
 
     <script src="{{ asset('/js/app.js') }}" type="text/javascript"></script>
