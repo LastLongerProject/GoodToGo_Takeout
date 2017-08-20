@@ -51,15 +51,15 @@
     <meta property="og:description" content="好盒器推動用玻璃杯取代免洗杯！透過店家與民眾一同參與，從源頭落實垃圾減量，讓地球變得更美麗。" />
 
     <!-- FAVICON -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/img/favicon/manifest.json">
-    <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#8cd4e0">
-    <link rel="shortcut icon" href="/img/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/img/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/img/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/img/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('/img/favicon/manifest.json') }}">
+    <link rel="mask-icon" href="{{ asset('/img/favicon/safari-pinned-tab.svg') }}" color="#8cd4e0">
+    <link rel="shortcut icon" href="{{ asset('/img/favicon/favicon.ico') }}">
     <meta name="apple-mobile-web-app-title" content="好盒器 | @yield('title')">
     <meta name="application-name" content="好盒器 | @yield('title')">
-    <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
+    <meta name="msapplication-config" content="{{ asset('/img/favicon/browserconfig.xml') }}">
     <meta name="theme-color" content="#ffffff">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
@@ -70,6 +70,34 @@
     <script type="text/javascript" src="{{ asset('/js/pace.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+    <style>
+        @font-face {
+          font-family: 'Glyphicons Halflings';
+          src: url('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/fonts/glyphicons-halflings-regular.eot');
+          src: url('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+               url('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff2') format('woff2'),
+               url('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff') format('woff'),
+               url('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+               url('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+        }
+        .glyphicon {
+          position: relative;
+          top: 1px;
+          display: inline-block;
+          font: normal normal 16px/1 'Glyphicons Halflings';
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          margin-right: 4px;
+        }
+        /* Add icons you will be using below */
+        .glyphicon-fire:before {
+          content: '\e104';
+        }
+        .glyphicon-eye-open:before {
+          content: '\e105';
+        }
+    </style>
+
 </head>
 <body id="main" class="disable-select">
     @include('layouts/navbar')
