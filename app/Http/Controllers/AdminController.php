@@ -22,13 +22,8 @@ class AdminController extends Controller
     	$fileName = "container_type.xlsx";
         $status = "成功";
 
-        $alltype = Container_type::all();
 
         $allexcel = Excel::load('storage/files/'.$fileName, function($reader) {})->get();
-
-        if($alltype->count() > $allexcel->count()){
-            abort(404);
-        }
 
 		Excel::filter('chunk')->load('storage/files/'.$fileName)->chunk(250, function($results) {
             foreach ($results as $row) {
