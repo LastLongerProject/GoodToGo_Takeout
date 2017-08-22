@@ -10,6 +10,8 @@
 			<a href="{{ Route('lend',['slug' => $vendor->slug]) }}"><button class="gtg-button">租借杯杯</button></a>
 			<a href="{{ Route('recover',['slug' => $vendor->slug ]) }}"><button class="gtg-button">回收杯杯</button></a>
 			<a href="{{ Route('status',['slug' => $vendor->slug ]) }}"><button class="gtg-button">杯杯狀態</button></a>
+			<a href="{{ Route('addmember',['slug' => $vendor->slug ]) }}"><button class="gtg-button">新增會員</button></a>
+			<a href="{{ Route('status',['slug' => $vendor->slug ]) }}"><button class="gtg-button">聯絡好盒器</button></a>
 		</div>
 	</div>
 </div>

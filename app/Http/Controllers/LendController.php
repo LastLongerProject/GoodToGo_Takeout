@@ -16,10 +16,15 @@ class LendController extends Controller
             return view('lend')->with('vendor',$vendor);
         }
 
+        public function addmember($slug){
+            $vendor = Vendor::where('slug', $slug)->first();
+            return view('addmember')->with('vendor',$vendor);
+        }
+
         public function lendPhoneCheck(request $request ,$slug) {
         if($request->phone) {
             if($customer = Customer::where('phone', $request->phone)->first()){
-                    return \Response::json(['success' => '此用戶已經註冊'], 200); 
+                    return \Response::json(['success' => '會員確認'], 200); 
                 }
                 else{
                       return \Response::json(['error' => '此手機號碼尚未加入會員，是否直接註冊？'], 404); 
@@ -58,11 +63,11 @@ class LendController extends Controller
 
 
                 if(($recover_container && $recover_container->created_at < $container->created_at)){
-                    return \Response::json(['error' => '杯子編號 :<br> '.$container->number.' 已被借走'], 500);
+                    return \Response::json(['error' => '杯杯編號 :<br> '.$container->number.' 已被借走'], 500);
                 }
 
                 if(!$recover_container && $container){
-                    return \Response::json(['error' => '杯子編號 :<br> '.$container->number.' 已被借走'], 500);
+                    return \Response::json(['error' => '杯杯編號 :<br> '.$container->number.' 已被借走'], 500);
                 }
 
 
@@ -72,7 +77,7 @@ class LendController extends Controller
             $container_type = Container_type::find($request->number);
             
             if(!$container_type){
-                return \Response::json(['error' => '編號'. $request->number .'的杯子不存在'], 404);
+                return \Response::json(['error' => '編號'. $request->number .'的杯杯不存在'], 404);
             }
 
             $n_container = new Container;

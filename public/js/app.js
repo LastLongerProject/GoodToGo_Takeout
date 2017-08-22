@@ -145,7 +145,7 @@ $(document).ready(function () {
             new Noty({
                 type: 'error',
                 layout: 'center',
-                text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>手機號碼輸入錯誤<div class="info-div">重新填寫</div>',
+                text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>手機號碼輸入錯誤<div class="info-div">重新輸入</div>',
                 // timeout: 2000,
                 theme: 'nest',
                 animation: {
@@ -170,7 +170,7 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function success(response) {
-                $('.num').fadeIn('2000', function () {
+                $('.num').fadeIn('1000', function () {
                     $(this).removeClass('.container-hideden');
                     $('#tel').attr('disabled', 'disabled');
                     $('#lendsend-step2').removeClass('container-hidden');
@@ -180,7 +180,7 @@ $(document).ready(function () {
                     type: 'success',
                     layout: 'center',
                     text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-ok glyphicon-bordered"></span></div><br>' + response.success,
-                    timeout: 1000,
+                    timeout: 500,
                     theme: 'nest',
                     animation: {
                         open: 'animated fadeInUp', // Animate.css class names
@@ -210,7 +210,7 @@ $(document).ready(function () {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function success(response) {
-                                $('.num').fadeIn('2000', function () {
+                                $('.num').fadeIn('1000', function () {
                                     $(this).removeClass('.container-hideden');
                                     $('#tel').attr('disabled', 'disabled');
                                     $('#lendsend-step2').removeClass('container-hidden');
@@ -220,7 +220,7 @@ $(document).ready(function () {
                                     type: 'success',
                                     layout: 'center',
                                     text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-ok glyphicon-bordered"></span></div><br>' + response.success,
-                                    timeout: 1000,
+                                    timeout: 500,
                                     theme: 'nest',
                                     animation: {
                                         open: 'animated fadeInUp', // Animate.css class names
@@ -297,7 +297,7 @@ $(document).ready(function () {
                 new Noty({
                     type: 'success',
                     layout: 'center',
-                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-ok glyphicon-bordered"></span></div><br>' + response.success + '<div class="info-div">好</div>',
+                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-ok glyphicon-bordered"></span></div><br>' + response.success + '<div class="info-div">繼續出借下一個杯杯</div>',
                     // timeout: 1500,
                     theme: 'nest',
                     animation: {
@@ -311,7 +311,7 @@ $(document).ready(function () {
                 new Noty({
                     type: 'error',
                     layout: 'center',
-                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>' + response.responseJSON.error + '<div class="info-div">好</div>',
+                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>' + response.responseJSON.error + '<div class="info-div">重新輸入</div>',
                     // timeout: 2000,
                     theme: 'nest',
                     animation: {
@@ -319,6 +319,7 @@ $(document).ready(function () {
                         close: 'animated fadeOutDown' // Animate.css class names
                     }
                 }).show();
+                $('#num').val('');
             }
 
         });
@@ -332,7 +333,7 @@ $(document).ready(function () {
             new Noty({
                 type: 'error',
                 layout: 'center',
-                text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>請填寫正確杯子編號<div class="info-div">好</div>',
+                text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>杯杯號碼輸入錯誤<div class="info-div">重新輸入</div>',
                 // timeout: 2000,
                 theme: 'nest',
                 animation: {
@@ -359,7 +360,7 @@ $(document).ready(function () {
                 new Noty({
                     type: 'success',
                     layout: 'center',
-                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-ok glyphicon-bordered"></span></div><br>' + response.success + '<div class="info-div">好</div>',
+                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-ok glyphicon-bordered"></span></div><br>' + response.success + '<div class="info-div">繼續回收下一個杯杯</div>',
                     // timeout: 1500,
                     theme: 'nest',
                     animation: {
@@ -373,7 +374,7 @@ $(document).ready(function () {
                 new Noty({
                     type: 'error',
                     layout: 'center',
-                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>' + response.responseJSON.error + '<div class="info-div">好</div>',
+                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>' + response.responseJSON.error + '<div class="info-div">重新輸入</div>',
                     // timeout: 2000,
                     theme: 'nest',
                     animation: {
@@ -381,6 +382,7 @@ $(document).ready(function () {
                         close: 'animated fadeOutDown' // Animate.css class names
                     }
                 }).show();
+                $('#num').val('');
             }
 
         });

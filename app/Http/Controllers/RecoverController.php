@@ -27,11 +27,11 @@ class RecoverController extends Controller
 
         if($recover_container){
             if($recover_container->created_at > $container->created_at){
-                return \Response::json(['error' => '杯子編號 : <br>'.$container->number.' 沒有被租借'], 404);
+                return \Response::json(['error' => '杯杯編號 : <br>'.$container->number.' 沒有被出借'], 404);
             }
         }
         if(!$container_type){
-                return \Response::json(['error' => '編號'. $request->number .'的杯子不存在'], 404);
+                return \Response::json(['error' => '編號'. $request->number .'的杯杯不存在'], 404);
         }
     	if($container){
                 $vendor = Vendor::where('slug',$slug)->first();
@@ -48,11 +48,11 @@ class RecoverController extends Controller
                 $o_container->status = 0;
                 
                 if($o_container->save()){
-    		return \Response::json(['success' => '杯子編號 : <br>'.$container->number.' 回收完成'], 200);
+    		return \Response::json(['success' => '杯杯編號 : <br>'.$container->number.' 回收成功'], 200);
                 }
     	}
     	else {
-    		return \Response::json(['error' => '杯子編號 : <br>'.$request->number.' 沒有被租借'], 404);
+    		return \Response::json(['error' => '杯杯編號 : <br>'.$request->number.' 沒有被出借'], 404);
     	}
     }
 }

@@ -5,9 +5,11 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4 text-center">
-            @foreach($lists as $list)
+            @forelse($lists as $list)
 			<a href="{{ Route('main',['slug' => $list->slug ]) }}"><button class="gtg-button button-small">{{ $list->name }}</button></a>
-            @endforeach
+			@empty
+		    <h2>沒有店家</h2>
+            @endforelse
 		</div>
 	</div>
 </div>
