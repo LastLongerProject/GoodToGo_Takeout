@@ -23,6 +23,25 @@
   src: url(https://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Bold.woff2) format("woff2"), url(https://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Bold.woff) format("woff"), url(https://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Bold.otf) format("opentype")
   font-display: swap
 
+.gtg-input
+	background: #fff url(data:image/gif;base64,R0lGODlhBwAHAIAAAP///5KSkiH5BAAAAAAALAAAAAAHAAcAAAIMTICmsGrIXnLxuDMLADs=) no-repeat right -10px center
+	transition: background 0.4s
+	height: calc(9vh)
+	width: 100%
+	border: none
+	border-top: 1px solid #dad9d9
+	border-radius: 3px
+	color: #808080
+	margin-top: 8px
+	&.x
+		background-position: right 14px center
+	&.onX
+		cursor: pointer
+	&::-ms-clear
+		display: none
+		width: 0
+		height: 0
+
 #noty_layout__center
 	width: calc(36vh)
 	height: calc(30vh)
@@ -132,15 +151,6 @@ body
 			color: #fff
 	.gtg-navback
 		margin-left: 14px
-
-.gtg-input
-	height: calc(9vh)
-	width: 100%
-	border: none
-	border-top: 1px solid #dad9d9
-	border-radius: 3px
-	color: #808080
-	margin-top: 8px
 
 .status-colum
 	.container-status

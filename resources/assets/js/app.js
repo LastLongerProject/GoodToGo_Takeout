@@ -35,7 +35,19 @@ paceOptions = {
   }
 };
 
+
 $(document).ready(function() {
+
+
+  function tog(v){return v?'addClass':'removeClass';} 
+  $(document).on('input', '.gtg-input', function(){
+    $(this)[tog(this.value)]('x');
+  }).on('mousemove', '.x', function( e ){
+    $(this)[tog(this.offsetWidth-18 < e.clientX-this.getBoundingClientRect().left)]('onX');   
+  }).on('touchstart click', '.onX', function( ev ){
+    ev.preventDefault();
+    $(this).removeClass('x onX').val('').change();
+  });
 
 
     $('#lendsend').click(function(event) {
@@ -47,7 +59,7 @@ $(document).ready(function() {
             new Noty({
                 type: 'error',
                 layout: 'center',
-                text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>請填寫正確的手機號碼<div class="info-div">好</div>',
+                text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>手機號碼輸入錯誤<div class="info-div">重新填寫</div>',
                 // timeout: 2000,
                 theme: 'nest',
                 animation: {
@@ -55,6 +67,7 @@ $(document).ready(function() {
                     close: 'animated fadeOutDown' // Animate.css class names
                 }
             }).show();
+            $('#tel').val('');
             return false;
             event.preventDefault();
         }
@@ -98,6 +111,10 @@ $(document).ready(function() {
                     closeWith: false,
                     text: response.responseJSON.error + '<br><br>' + $phone,
                     buttons: [
+
+                        Noty.button('否', 'btn btn-danger info-btn', function() {
+                            n.close();
+                        }),
                         Noty.button('是', 'btn btn-success info-btn', function() {
                             n.close();
                             $.ajax({
@@ -153,9 +170,6 @@ $(document).ready(function() {
                             'data-status': 'ok'
                         }),
 
-                        Noty.button('否', 'btn btn-danger info-btn', function() {
-                            n.close();
-                        })
                     ],
                     theme: 'nest',
                     animation: {
