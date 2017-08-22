@@ -22,7 +22,7 @@ class LendController extends Controller
                     return \Response::json(['success' => '此用戶已經註冊'], 200); 
                 }
                 else{
-                      return \Response::json(['error' => '用戶還未註冊，是否進行註冊?'], 404); 
+                      return \Response::json(['error' => '此手機號碼尚未加入會員，是否直接註冊？'], 404); 
                 }
             }
         else {
@@ -58,11 +58,11 @@ class LendController extends Controller
 
 
                 if(($recover_container && $recover_container->created_at < $container->created_at)){
-                    return \Response::json(['error' => '杯子編號 :<br> '.$container->number.' 已經被借走'], 500);
+                    return \Response::json(['error' => '杯子編號 :<br> '.$container->number.' 已被借走'], 500);
                 }
 
                 if(!$recover_container && $container){
-                    return \Response::json(['error' => '杯子編號 :<br> '.$container->number.' 已經被借走'], 500);
+                    return \Response::json(['error' => '杯子編號 :<br> '.$container->number.' 已被借走'], 500);
                 }
 
 
