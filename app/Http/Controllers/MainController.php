@@ -19,8 +19,9 @@ class MainController extends Controller
 		}
     }
 
-    public function contacts(){
-
+    public function contacts($slug){
+    	$vendor = Vendor::where('slug', $slug)->first();
+    	return view('contacts')->with('vendor', $vendor);
     	
     }
 

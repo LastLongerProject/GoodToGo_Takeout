@@ -31,6 +31,9 @@ Route::post('/vendor/{slug}/recoverContainer', 'RecoverController@recoverContain
 /* Vendor Status Route */
 Route::get('/vendor/{slug}/status', 'StatusController@index')->name('status');
 
+/* Vendor Contacts Route */
+Route::get('/vendor/{slug}/contacts', 'MainController@contacts')->name('contacts');
+
 /* Admin Route */
 Route::get('/backstage', 'AdminController@index')->name('admin');
 Route::get('/backstage/container_type', 'AdminController@readExcel');
