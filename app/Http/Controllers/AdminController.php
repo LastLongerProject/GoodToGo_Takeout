@@ -21,18 +21,28 @@ class AdminController extends Controller
     public function readExcel(){
     	$fileName = "container_type.xlsx";
         $status = "成功";
+
+        $alltype = Container_type::all();
+
+        $allexcel = Excel::load('storage/files/'.$fileName, function($reader) {})->get();
+
+        if($alltype->count() > $allexcel->count()){
+            abort(404);
+        }
+
 		Excel::filter('chunk')->load('storage/files/'.$fileName)->chunk(250, function($results) {
             foreach ($results as $row) {
-                $container_type = Container_type::firstOrCreate(['id' => $row->名稱]);
-                $container_type->id = $row->名稱;
+
+                $container_type = Container_type::firstOrCreate(['id' => $row->編號]);
+                $container_type->id = $row->編號;
                 $container_type->type = $row->類型;
                 $container_type->decoration = $row->樣式;
 
                 if($container_type->save()){ continue;}
                 else{ break; $status="失敗"; return "失敗";}
 
-	            }
-
+	               }
+                
 		});
    return view("container_type")->with('status',$status);
          

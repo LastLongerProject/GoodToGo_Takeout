@@ -19,6 +19,7 @@ Route::get('/vendor/{slug}', 'MainController@index')->name('main');
 
 /* Lend Container Route */
 Route::get('/vendor/{slug}/lend', 'LendController@index')->name('lend');
+Route::get('/vendor/{slug}/addmember', 'LendController@addmember')->name('addmember');
 Route::post('/vendor/{slug}/lendPhoneCheck', 'LendController@lendPhoneCheck');
 Route::post('/vendor/{slug}/lendContainerCreate', 'LendController@lendContainerCreate');
 Route::post('/vendor/{slug}/customerCreate', 'LendController@customerCreate');
