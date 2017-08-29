@@ -12,28 +12,37 @@
 */
 
 /* Vendor List Route*/
-Route::get('/', 'AdminController@vendorList');
+Route::get('/', 'AdminController@list');
 
-/* Vendor Menu Route */
-Route::get('/vendor/{slug}', 'MainController@index')->name('main');
 
-/* Lend Container Route */
-Route::get('/vendor/{slug}/lend', 'LendController@index')->name('lend');
-Route::get('/vendor/{slug}/addmember', 'LendController@addmember')->name('addmember');
-Route::post('/vendor/{slug}/lendPhoneCheck', 'LendController@lendPhoneCheck');
-Route::post('/vendor/{slug}/lendContainerCreate', 'LendController@lendContainerCreate');
-Route::post('/vendor/{slug}/customerCreate', 'LendController@customerCreate');
+Route::prefix('vendor')->group(function () {
+	/* Vendor Menu Route */
+	Route::get('{slug}', 'MainController@index')->name('main');
 
-/* Recover Container Route */
-Route::get('/vendor/{slug}/recover', 'RecoverController@index')->name('recover');
-Route::post('/vendor/{slug}/recoverContainer', 'RecoverController@recoverContainer');
+	/* Lend Container Route */
+	Route::get('{slug}/lend', 'LendController@index')->name('lend');
+	Route::get('{slug}/addmember', 'LendController@addmember')->name('addmember');
+	Route::post('{slug}/lendPhoneCheck', 'LendController@lendPhoneCheck');
+	Route::post('{slug}/lendContainerCreate', 'LendController@lendContainerCreate');
+	Route::post('{slug}/customerCreate', 'LendController@customerCreate');
 
-/* Vendor Status Route */
-Route::get('/vendor/{slug}/status', 'StatusController@index')->name('status');
+	/* Recover Container Route */
+	Route::get('{slug}/recover', 'RecoverController@index')->name('recover');
+	Route::post('{slug}/recoverContainer', 'RecoverController@recoverContainer');
 
-/* Vendor Contacts Route */
-Route::get('/vendor/{slug}/contacts', 'MainController@contacts')->name('contacts');
+	/* Vendor Status Route */
+	Route::get('{slug}/status', 'StatusController@index')->name('status');
+
+	/* Vendor Contacts Route */
+	Route::get('{slug}/contacts', 'MainController@contacts')->name('contacts');
+});
+
+
+
 
 /* Admin Route */
-Route::get('/backstage', 'AdminController@index')->name('admin');
-Route::get('/backstage/container_type', 'AdminController@readExcel');
+Route::prefix('backstage')->group(function () {
+	Route::get('/', 'AdminController@index')->name('admin');
+	Route::get('container_type', 'AdminController@readExcel');
+});
+

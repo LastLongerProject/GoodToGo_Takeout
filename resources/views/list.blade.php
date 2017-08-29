@@ -1,4 +1,4 @@
-@extends('partials/app_admin')
+@extends('partials/backstage')
 @section('title','店鋪清單')
 @section('content')
 

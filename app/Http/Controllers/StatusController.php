@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-use App\Vendor;
-use App\Container;
-use App\Container_type;
-use App\Customer;
+use App\Models\Vendor;
+use App\Models\Container;
+use App\Models\Container_type;
+use App\Models\Customer;
 
 class StatusController extends Controller
 {

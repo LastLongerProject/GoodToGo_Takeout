@@ -83,7 +83,7 @@
                url('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
         }
         body { 
-            padding-top: 52px;
+            padding-top: 24px;
         }
         .glyphicon {
           position: relative;
@@ -96,9 +96,14 @@
         }
     </style>
 </head>
-<body id="main" class="disable-select">
+<body id="main">
     @yield('content')
 
+     
+
+
+{{--   </div> --}}
+</nav>
     <script src="{{ asset('/js/app.js') }}" type="text/javascript"></script>
 @yield('js')
 </body>

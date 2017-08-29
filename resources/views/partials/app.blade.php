@@ -104,6 +104,7 @@
     @yield('content')
 
     <script src="{{ asset('/js/app.js') }}" type="text/javascript"></script>
-@yield('js')
+    <script>document.addEventListener("touchmove", function(event){event.preventDefault();}, false);</script>
+    @yield('js')
 </body>
 </html>

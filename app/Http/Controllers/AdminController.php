@@ -4,18 +4,20 @@ namespace App\Http\Controllers;
 
 use Excel;
 use Illuminate\Http\Request;
-use App\Container_type;
-use App\Vendor;
+use App\Models\Container_type;
+use App\Models\Container;
+use App\Models\Vendor;
 
 class AdminController extends Controller
 {
     public function index(){
-    	    return view('admin');
+            $container = Container::Paginate(15);
+    	    return view('admin')->with('container',$container);
     }
 
-    public function vendorlist(){
+    public function list(){
         $list = Vendor::all();
-        return view('vendorlist')->with('lists',$list);
+        return view('list')->with('lists',$list);
     }
 
     public function readExcel(){

@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Vendor;
-use App\Customer;
-use App\Container;
-use App\Container_type;
+use App\Models\Vendor;
+use App\Models\Customer;
+use App\Models\Container;
+use App\Models\Container_type;
 
 class RecoverController extends Controller
 {
