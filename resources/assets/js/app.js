@@ -315,4 +315,71 @@ $('#recoversend').click(function(event) {
 
         });
     });
+$('#updatevendor').click(function(event) {
+       
+
+    var $vendor_id = $('#vendor-id').val();
+    var $vendor_480 = $('#vendor-480').val();
+    var $vendor_360 = $('#vendor-360').val();
+
+    if($vendor_480 =='' || $vendor_360 ==''){
+             new Noty({
+                            type: 'error',
+                            layout: 'center',
+                            text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>欄位必填<br><div class="info-div">重新輸入</div>',
+                            // timeout: 2000,
+                            theme: 'nest',
+                            animation: {
+                                open: 'animated fadeInUp', // Animate.css class names
+                                close: 'animated fadeOutDown' // Animate.css class names
+                            }
+                        }).show();
+             return false;
+        }
+        event.preventDefault();
+
+       $.ajax({
+            url: 'updateVendor',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                vendor_id: $vendor_id,
+                vendor_480: $vendor_480,
+                vendor_360: $vendor_360,
+            },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                $('#vendor_480').val('');
+                $('#vendor_360').val('');
+                new Noty({
+                    type: 'success',
+                    layout: 'center',
+                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-ok glyphicon-bordered"></span></div><br>'+'修改成功'+'<br><div class="info-div">好</div>',
+                    // timeout: 1500,
+                    theme: 'nest',
+                    animation: {
+                        open: 'animated fadeInUp', // Animate.css class names
+                        close: 'animated fadeOutDown' // Animate.css class names
+                    }
+                }).show();
+            },
+            error: function(response) {
+
+                new Noty({
+                    type: 'error',
+                    layout: 'center',
+                    text: '<div class="glyphicon-ring"> <span class="glyphicon glyphicon-remove glyphicon-bordered"></span></div><br>'+'修改失敗'+'<div class="info-div">重新輸入</div>',
+                    // timeout: 2000,
+                    theme: 'nest',
+                    animation: {
+                        open: 'animated fadeInUp', // Animate.css class names
+                        close: 'animated fadeOutDown' // Animate.css class names
+                    }
+                }).show();
+            },
+
+        });
+});
 });

@@ -47,5 +47,7 @@ Route::prefix('backstage')->group(function () {
 	Route::get('record', 'AdminController@record')->name('record');
 	Route::get('exportfile', 'AdminController@exportFile')->name('export');
 	Route::get('status', 'AdminController@status')->name('bstatus');
+	Route::get('update', 'AdminController@update')->name('update');
+	Route::post('updateVendor', 'AdminController@updateVendor');
 });
 

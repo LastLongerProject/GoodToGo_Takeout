@@ -14,7 +14,6 @@ use App\Models\Customer;
 class AdminController extends Controller
 {
     public function index(){
-            ;
     	    return view('admin');
     }
 
@@ -26,21 +25,25 @@ class AdminController extends Controller
     public function readExcel(){
     	$fileName = "container_type.xlsx";
         $status = "成功";
-
+        
 
         $allexcel = Excel::load('storage/files/'.$fileName, function($reader) {})->get();
 
-		Excel::filter('chunk')->load('storage/files/'.$fileName)->chunk(250, function($results) {
+		Excel::filter('chunk')->load('storage/files/'.$fileName)->chunk(100, function($results) {
+            $index = 0;
             foreach ($results as $row) {
+
+                if($row->編號 == null){
+                    $status="失敗在".$index."的資料，有可能是多出來的欄位。"; break;
+                }
 
                 $container_type = Container_type::firstOrCreate(['id' => $row->編號]);
                 $container_type->id = $row->編號;
                 $container_type->type = $row->類型;
                 $container_type->decoration = $row->樣式;
 
-                if($container_type->save()){ continue;}
-                else{ break; $status="失敗"; return "失敗";}
-
+                if($container_type->save()){ continue; $index++;}
+                else{ $status="失敗"; break;}
 	               }
                 
 		});
@@ -95,5 +98,26 @@ Excel::create('ContainerHistory-'.Carbon::now(), function($excel) {
         $customer = Customer::all()->count();
 
         return view('bstatus',compact('vendor','container_lend','container_recover','container_type','customer'));
+    }
+
+    public function update(){
+        $vendor = Vendor::all();
+        return view('update')->with('vendor', $vendor);
+    }
+
+    public function updateVendor(Request $request){
+        $vendor = Vendor::find($request->vendor_id);
+
+        $vendor->possess_480 = $request->vendor_480;
+        $vendor->possess_360 = $request->vendor_360;
+        
+        if($vendor->touch()){
+             return \Response::json(['sucess' => '修改成功'], 200);
+        }
+        else {
+            return \Response::json(['error' => '修改失敗'], 500);
+        }
+
+       
     }
 }
