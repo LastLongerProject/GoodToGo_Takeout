@@ -18,7 +18,7 @@
     </g>
 </svg> 480mL    杯</p>
             	<p>可用</p>
-            	<h1>{{ $possess_480 }}</h1>
+            	<h1>{{ $es_480 }}</h1>
              	<p>個</p>
             </div>
         </div>
@@ -37,21 +37,21 @@
     </g>
 </svg>  360mL    杯</p>
             	<p>可用</p>
-            	<h1>{{ $possess_360 }}</h1>
+            	<h1>{{ $es_360 }}</h1>
              	<p>個</p>
             </div>
         </div>
         <div class="col-xs-12">
 			<div class="container-lr lr-blue">
         		<p>今日累積借出</p>
-        		<h1 class="text-right">{{ $lend }}<span>個</span></h1>
+        		<h1 class="text-right">{{ $lend_container }}<span>個</span></h1>
         	</div>
         </div>
 
         <div class="col-xs-12">
 			<div class="container-lr lr-palm">
         		<p>今日累計回收</p>
-        		<h1 class="text-right">{{ $recover }}<span>個</span></h1>
+        		<h1 class="text-right">{{ $recover_container }}<span>個</span></h1>
         	</div>
         </div>
          

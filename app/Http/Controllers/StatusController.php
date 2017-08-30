@@ -39,7 +39,7 @@ class StatusController extends Controller
                     $p_480++; 
               }
             };
-        }
+        };
 
         $es_360 = $vendor->possess_360 - $p_360;
         $es_480 = $vendor->possess_480 - $p_480;
@@ -47,6 +47,6 @@ class StatusController extends Controller
 		$lend_container = Container::where('vendor_id', $vendor->id)->where('created_at','>', $today)->where('created_at','<', $tommrow)->where('status',1)->count();
 		$recover_container = Container::where('vendor_id', $vendor->id)->where('created_at','>', $today)->where('created_at','<', $tommrow)->where('status',0)->count();
 
-    	return view('status')->with('vendor', $vendor)->with('lend', $lend_container)->with('recover',$recover_container)->with('possess_360', $es_360)->with('possess_480',$es_480);
+    	return view('status', compact('vendor','lend_container','recover_container','es_360','es_480'));
     }
 }
