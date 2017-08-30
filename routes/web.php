@@ -12,7 +12,7 @@
 */
 
 /* Vendor List Route*/
-Route::get('/', 'AdminController@list');
+Route::get('/', 'AdminController@vendorlist');
 
 
 Route::prefix('vendor')->group(function () {

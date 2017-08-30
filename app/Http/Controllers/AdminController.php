@@ -17,9 +17,9 @@ class AdminController extends Controller
     	    return view('admin');
     }
 
-    public function list(){
+    public function vendorlist(){
         $list = Vendor::all();
-        return view('list')->with('lists',$list);
+        return view('vendorlist')->with('lists',$list);
     }
 
     public function readExcel(){
