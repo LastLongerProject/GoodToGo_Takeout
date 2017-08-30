@@ -44,5 +44,8 @@ Route::prefix('vendor')->group(function () {
 Route::prefix('backstage')->group(function () {
 	Route::get('/', 'AdminController@index')->name('admin');
 	Route::get('container_type', 'AdminController@readExcel');
+	Route::get('record', 'AdminController@record')->name('record');
+	Route::get('exportfile', 'AdminController@exportFile')->name('export');
+	Route::get('status', 'AdminController@status')->name('bstatus');
 });
 
