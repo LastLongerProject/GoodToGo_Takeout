@@ -17,6 +17,7 @@ class CreateContainerTypesTable extends Migration
             $table->increments('id');
             $table->string('type')->nullable();
             $table->string('decoration')->nullable();
+            $table->tinyInteger('status')->nullable()->default(0);
             $table->timestamps();
         });
     }
