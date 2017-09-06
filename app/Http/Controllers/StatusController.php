@@ -25,30 +25,17 @@ class StatusController extends Controller
             ->where('created_at', '>', $vendor->updated_at)
             ->where('status', 1)
             ->get();
-        $possess_o = Container::where('vendor_id', $vendor->id)
-            ->where('created_at', '>', $vendor->updated_at)
-            ->where('status', 0)
-            ->get();
 
         if ($possess->first())
         {
-            foreach ($possess as $p3)
+            foreach ($possess as $p)
             {
-                $temp3 = Container_type::where('id', round($p3->number))
-                    ->where('decoration', 360)
-                    ->get();
-                if ($temp3->first())
+                $container_temp = Container_type::find($p->container_type_id);
+                if($container_temp->decoration == 360)
                 {
                     $p_360++;
                 }
-            };
-
-            foreach ($possess as $p4)
-            {
-                $temp4 = Container_type::where('id', round($p4->number))
-                    ->where('decoration', 480)
-                    ->get();
-                if ($temp4->first())
+                elseif($container_temp->decoration == 480)
                 {
                     $p_480++;
                 }
@@ -59,10 +46,14 @@ class StatusController extends Controller
         $es_480 = $vendor->possess_480 - $p_480;
 
         $lend_container = Container::where('vendor_id', $vendor->id)
-            ->where('created_at', '>', $today)->where('created_at', '<', $tommrow)->where('status', 1)
+            ->where('created_at', '>', $today)
+            ->where('created_at', '<', $tommrow)
+            ->where('status', 1)
             ->count();
         $recover_container = Container::where('vendor_id', $vendor->id)
-            ->where('created_at', '>', $today)->where('created_at', '<', $tommrow)->where('status', 0)
+            ->where('created_at', '>', $today)
+            ->where('created_at', '<', $tommrow)
+            ->where('status', 0)
             ->count();
 
         return view('status', compact('vendor', 'lend_container', 'recover_container', 'es_360', 'es_480'));
