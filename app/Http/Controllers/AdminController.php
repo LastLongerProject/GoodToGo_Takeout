@@ -45,20 +45,16 @@ class AdminController extends Controller
         {
         })->get();
 
-        
-
         Excel::filter('chunk')
             ->load('public/uploads/' . $fileName)->chunk(100, function ($results)
         {
             foreach ($results as $row)
             {
-                $container_status = 0;
                 if ($row->編號 == null)
                 {
                     $status = "失敗，有可能是多出來的欄位。";
                     break;
                 }
-
 
                 $container_type = Container_type::firstOrCreate(['id' => $row->編號]);
                 $container_type->id = $row->編號;
@@ -69,7 +65,6 @@ class AdminController extends Controller
                 if ($container_type->save())
                 {
                     continue;
-                    $index++;
                 }
                 else
                 {
@@ -164,7 +159,66 @@ class AdminController extends Controller
         {
             return \Response::json(['error' => '修改失敗'], 500);
         }
-
     }
+
+    public function zxrecord(){
+        return view('zxrecord');
+    }
+    public function importzx(Request $request)
+    {
+        $file = $request->file('file');
+        if ($file->isValid()) {
+            $file->move('uploads', $file->getClientOriginalName());
+        }
+        
+        $fileName = $file->getClientOriginalName();
+        $status = "成功";
+
+        $allexcel = Excel::load('public/uploads/' . $fileName, function ($reader)
+        {
+        })->get();
+
+        Excel::filter('chunk')
+            ->load('public/uploads/' . $fileName)->chunk(100, function ($results)
+        {
+            foreach ($results as $row)
+            {
+                if ($row->編號 == null)
+                {
+                    $status = "失敗，有可能是多出來的欄位。";
+                    break;
+                }
+
+                if($row->狀態 == "借出"){
+                    $cstatus = 1;
+                }
+                elseif ($row->狀態 == "歸還") {
+                    $cstatus = 0;
+                }
+                
+                $container = new Container();
+                $container->number = str_pad($row->編號,4,"0",STR_PAD_LEFT);
+                $container->vendor_name = "正興杯杯計畫";
+                $container->vendor_id = 0;
+                $container->customer_id = 1;
+                $container->customer_phone = "0900000000";
+                $container->container_type_id = $row->編號;
+                $container->status = $cstatus;
+
+                if ($container->save())
+                {
+                    continue;
+                }
+                else
+                {
+                    $status = "失敗";
+                    break;
+                }
+            }
+
+        });
+         return view("container_type")->with('status', $status);
+    }
+
 }
 
