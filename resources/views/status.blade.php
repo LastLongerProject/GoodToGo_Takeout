@@ -1,7 +1,7 @@
 @extends('partials/app')
 @section('title','杯杯狀態')
 @section('content')
-<div class="container">
+{{--  <div class="container">
     <div class="row">
         <div class="col-xs-6 status-colum text-center">
             <div class="container-status">
@@ -55,6 +55,17 @@
         	</div>
         </div>
          
+        </div>
+    </div>
+</div>  --}}
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 text-center">
+            <a href="{{ Route('lendstatus',['slug' => $vendor->slug]) }}"><button class="gtg-button button-small">借出紀錄</button></a>
+            <a href="{{ Route('recoverstatus',['slug' => $vendor->slug] ) }}"><button class="gtg-button button-small">歸還紀錄</button></a>
         </div>
     </div>
 </div>

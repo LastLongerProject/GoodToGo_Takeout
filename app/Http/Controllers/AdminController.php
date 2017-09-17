@@ -123,7 +123,7 @@ class AdminController extends Controller
 
     public function record()
     {
-        $container = Container::Paginate(15);
+        $container = Container::orderBy('created_at', 'desc')->paginate(15);
         return view('record')->with('container', $container);
     }
 

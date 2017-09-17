@@ -32,6 +32,8 @@ Route::prefix('vendor')->group(function () {
 
 	/* Vendor Status Route */
 	Route::get('{slug}/status', 'StatusController@index')->name('status');
+	Route::get('{slug}/lendstatus', 'StatusController@lendstatus')->name('lendstatus');
+	Route::get('{slug}/recoverstatus', 'StatusController@recoverstatus')->name('recoverstatus');
 
 	/* Vendor Contacts Route */
 	Route::get('{slug}/contacts', 'MainController@contacts')->name('contacts');
