@@ -63,12 +63,12 @@ class StatusController extends Controller
     }
     public function lendstatus($slug){
         $vendor = Vendor::where('slug', $slug)->first();
-        $container = Container::where('vendor_id', $vendor->id)->where('status', 1)->latest()->paginate(6);
+        $container = Container::where('vendor_id', $vendor->id)->where('status', 1)->latest()->paginate(10);
         return view('allstatus', compact('vendor','container'));
     }
     public function recoverstatus($slug){
         $vendor = Vendor::where('slug', $slug)->first();
-        $container = Container::where('vendor_id', $vendor->id)->where('status', 0)->latest()->paginate(6);
+        $container = Container::where('vendor_id', $vendor->id)->where('status', 0)->latest()->paginate(10);
         return view('allstatus', compact('vendor','container'));
     }
 }
