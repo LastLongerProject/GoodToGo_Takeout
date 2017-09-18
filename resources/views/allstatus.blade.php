@@ -1,5 +1,5 @@
 @extends('partials/app')
-@section('title', '容器紀錄')
+@section('title', '杯杯紀錄')
 @section('content')
 	<div class="container">
 	<div class="row">
