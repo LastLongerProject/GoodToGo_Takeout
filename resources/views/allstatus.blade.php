@@ -7,12 +7,12 @@
 			  <table class="table table-responsive table-striped">
 				  <thead>
 				    <tr>
-				      <th>資料代號</th>
-				      <th>杯子號碼</th>
-				      <th>杯子容量</th>
-				      <th>顧客手機</th>
-				      <th>杯子狀態</th>
-				      <th>租借時間</th>
+				      <th>代號</th>
+				      <th>號碼</th>
+				      <th>容量</th>
+				      <th>顧客</th>
+				      <th>狀態</th>
+				      <th>時間</th>
 				    </tr>
 				  </thead>
 
