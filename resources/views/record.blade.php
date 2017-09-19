@@ -27,7 +27,7 @@
       					<td>{{ substr($c->vendor_name, 0, 6) }}</td>
       					<td>{{ $c->customer_phone }}</td>
       					<td>@if($c->status == 0) 歸還 @else 借出 @endif</td>
-      					<td>{{ Carbon\Carbon::parse($c->created_at)->format('m/d h:i') }}</td>
+      					<td>{{ Carbon\Carbon::parse($c->created_at)->format('m/d H:i') }}</td>
     			</tr>
 		@empty
 				   			 <tr>

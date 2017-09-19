@@ -25,7 +25,7 @@
      				 	<td>{{ App\Models\Container_type::find($c->number)->decoration }}</td>
       					<td>{{ $c->customer_phone }}</td>
       					<td>@if($c->status == 0) 歸還 @else 借出 @endif</td>
-      					<td>{{ Carbon\Carbon::parse($c->created_at)->format('m/d h:i') }}</td>
+      					<td>{{ Carbon\Carbon::parse($c->created_at)->format('m/d H:i') }}</td>
     			</tr>
 		@empty
 				   			 <tr>
@@ -45,12 +45,13 @@
 
 
 			  </table>
-			
-				<div class="container text-center">
-					{{ $container->links() }}
-				</div>
+
 	</div>
 </div>
 
 </div>
+			
+				<div class="container text-center">
+					{{ $container->links() }}
+				</div>
 @stop
